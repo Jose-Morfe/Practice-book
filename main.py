@@ -12,6 +12,9 @@ with open("YA_Books.csv", mode="r", encoding="utf-8") as bookfile:
     # author colomn is index 1
      min_year = 0
      worst_rating = 5
+     pages = 0
+     least_pages = 600
+     best_rating = 0
 
      for row in books:
     # print out only authors that start with "M"
@@ -37,7 +40,37 @@ with open("YA_Books.csv", mode="r", encoding="utf-8") as bookfile:
         # get the book with the worst rating
 
         rating = float(row[6])
-        if rating < worst_rating:
-            worst_rating = rating
-            worst_book = row
-print(f"Lowest rated book: \n{worst_rating}")
+        if worst_rating > rating:
+             worst_rating = rating
+             worst_book = row
+
+         # highest rating
+        rating = float(row[6])
+        if best_rating < rating:
+              best_rating = rating
+              most_rated = row
+
+
+            
+        most_pages = int(row[5])
+        if pages < most_pages:
+            pages = most_pages
+            the_pages = row
+            
+
+        no_pages = int(row[5])
+        if least_pages > no_pages:
+             least_pages = no_pages
+             notalot_pages = row
+             
+
+
+print( f" Highest rated book: \n {best_rating}")
+
+print ( f" Lowest rated book: \n{worst_rating}")
+
+print( f" Most pages: \n{pages}")
+
+print ( f" Least amount of pages: \n{least_pages}")
+
+print( f" The difference is : \n{pages - least_pages}")
